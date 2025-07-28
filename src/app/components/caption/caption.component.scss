@@ -1,0 +1,196 @@
+.card {
+    border-radius: 10px;
+    padding: 6rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(180deg, #5ee7df, #ab76cc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    position: relative;
+    text-shadow: 0 0 20px rgba(93, 166, 221, 0.4);
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  ::ng-deep .p-fileupload-advanced {
+    width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 2rem;
+  }
+  
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  ::ng-deep .p-button.back-button {
+    background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(94, 231, 223, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  ::ng-deep .p-button.back-button:hover {
+    background: linear-gradient(135deg, #ad7dcb 0%, #5ee7df 100%);
+    color: whitesmoke;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(180, 144, 202, 0.5);
+  }
+  
+  .galleria-item-wrapper {
+    height: 400px; /* fixierte Höhe */
+    aspect-ratio: 4 / 3; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  
+    @media (max-width: 768px) {
+      height: 400px;
+    }
+  
+    @media (max-width: 480px) {
+      height: 200px;
+    }
+  }
+  
+  .galleria-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  ::ng-deep .p-galleria {
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+    border: 3px solid transparent !important;
+    border-radius: 12px !important;
+    background-image:
+      linear-gradient(#120e4d, #0f0f0f),
+      linear-gradient(90deg,  #4facfe, #9f34b8) !important;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+    transition: all 0.1s ease;
+  }
+  
+  ::ng-deep .p-galleria-thumbnails-content {
+    background-color: transparent;
+  }
+  
+  .caption-box.typing {
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white;
+    animation: typing 2s steps(40, end), blink 0.75s step-end infinite;
+    text-align: center;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  
+  @media (max-width: 768px) {
+    ::ng-deep .p-fileupload-advanced {
+      width: 100%;
+      max-width: 400px;
+      padding: 1rem;
+    }
+    ::ng-deep .p-galleria {
+      width: 90%;
+    }
+  }
+  
+  ::ng-deep .p-fileupload-advanced {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #416e85, #5f46a1) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+  
+  ::ng-deep .p-fileupload-advanced:hover {
+    transform: scale(1.01) !important;
+    box-shadow: 0 12px 24px rgba(94, 231, 223, 0.25) !important;
+  }
+  
+  ::ng-deep .p-fileupload-buttonbar {
+    background: transparent;
+    border: none;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  ::ng-deep .p-button {
+    background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%) !important;
+    color: white !important;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(94, 231, 223, 0.2) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  ::ng-deep .p-button:hover {
+    background: linear-gradient(135deg, #b490ca 0%, #5ee7df 100%) !important;
+    color: whitesmoke !important;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(180, 144, 202, 0.5) !important;
+  }
+  
+  ::ng-deep .p-fileupload-content .p-progressbar {
+    background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%) !important;
+    border-radius: 8px;
+  }
+  
+  ::ng-deep .p-icon {
+    color: whitesmoke !important;
+  }
+  
+  ::ng-deep .p-button-secondary {
+    background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%) !important;
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border: none !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(79, 172, 254, 0.2) !important;
+  }
+  
+  ::ng-deep .p-button-secondary:hover {
+    background: linear-gradient(135deg, #b490ca 0%, #5ee7df 100%) !important;
+    color: whitesmoke !important;
+    transform: scale(1.05);
+    border:1px solid  #5ee7df !important;
+    box-shadow: 0 6px 14px rgba(180, 144, 202, 0.5)  !important;
+  }
