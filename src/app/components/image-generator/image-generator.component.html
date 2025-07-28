@@ -1,1 +1,25 @@
-<p>image-generator works!</p>
+<div class="card">
+    <h2>Image Generator</h2>
+    @if (!formSubmitted) {
+        <form [formGroup]="form">
+            <textarea rows="7" cols="30" pTextarea formControlName="text"></textarea>
+            <div class="button-wrapper">
+                <p-button label="Back"  icon="pi pi-arrow-left"  (onClick)="onBackToMenu()" styleClass="cool-button"/>
+                <p-button label="Submit" [disabled]="isInputEmpty" icon="pi pi-send"  (onClick)="onSubmit()" styleClass="cool-button"/>
+            </div>
+        </form>
+    }@else {
+        @if (!generatedImage) {
+            <div class="spinner-wrapper">
+                <p-progress-spinner ariaLabel="loading" />
+            </div>
+        }@else {
+            <img class="generated-image" [src]="generatedImage" />
+        }
+        <div class="button-wrapper">
+            <p-button label="Download" icon="pi pi-download" (onClick)="downloadImage()"styleClass="cool-button"/>
+            <p-button label="Try again" icon="pi pi-refresh" (onClick)="resetUpload()" styleClass="cool-button" />
+        </div>
+    }
+    <p-toast />
+</div>
