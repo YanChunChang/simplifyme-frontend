@@ -1,1 +1,26 @@
-<p>simplification works!</p>
+<div class="card">
+    <h2>Summarizing your text</h2>
+    @if (!formSubmitted) {
+        <form [formGroup]="form">
+            <textarea rows="7" cols="30" pTextarea formControlName="text"></textarea>
+            <div class="button-wrapper">
+                <p-button label="Back"  icon="pi pi-arrow-left"  (onClick)="onBackToMenu()" styleClass="cool-button"/>
+                <p-button label="Submit" [disabled]="isInputEmpty" icon="pi pi-send"  (onClick)="onSubmit()" styleClass="cool-button"/>
+            </div>
+        </form>
+    }@else {
+        @if (!summary) {
+            <div class="spinner-wrapper">
+                <p-progress-spinner ariaLabel="loading" />
+            </div>
+        }@else {
+            <div class="text-box">
+                <p>{{ summary }}</p>
+            </div>
+        }
+        <div class="button-wrapper-center">
+            <p-button label="Try again" icon="pi pi-refresh" (onClick)="resetUpload()" styleClass="cool-button" />
+        </div>
+    }
+    <p-toast/>
+</div>

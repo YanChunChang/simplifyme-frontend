@@ -31,8 +31,9 @@ export class ImageGeneratorComponent {
 
   ngOnInit(): void {
     this.form.get('text')?.valueChanges.subscribe((value) => {
+      const text = (value || '').toString();
       this.isInputEmpty = false;
-      if (value && value.trim() === '') {
+      if (text && text.trim() === '') {
         this.isInputEmpty = true;
       }
     });
