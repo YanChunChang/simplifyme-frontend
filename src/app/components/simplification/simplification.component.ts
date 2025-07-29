@@ -8,11 +8,14 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { FloatLabel } from 'primeng/floatlabel';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-simplification',
   standalone: true,
-  imports: [ReactiveFormsModule, TextareaModule, ButtonModule, MessageModule, ToastModule, ButtonModule, ProgressSpinnerModule],
+  imports: [ReactiveFormsModule, TextareaModule, ButtonModule, MessageModule, ToastModule, ButtonModule, ProgressSpinnerModule, FloatLabel, FormsModule],
   templateUrl: './simplification.component.html',
   styleUrl: './simplification.component.scss',
   providers: [MessageService]
@@ -22,9 +25,10 @@ export class SimplificationComponent {
   formSubmitted: boolean = false;
   summary: string = '';
   isInputEmpty: boolean = true;
+  wordCount: number = 0;
   constructor(private messageService: MessageService, private ApiService: ApiService, private router: Router) {
     this.form = new FormGroup({
-      text: new FormControl('', [Validators.required])
+      text: new FormControl('')
     });
   }
 
@@ -36,6 +40,10 @@ export class SimplificationComponent {
         this.isInputEmpty = true;
       }
     });
+  }
+
+  get text(): string {
+    return this.form.get('text')?.value || '';
   }
 
   getSummary() {
@@ -57,6 +65,10 @@ export class SimplificationComponent {
     }
   }
 
+  countWords(): void {
+    this.wordCount = this.text.trim().split(/\s+/).filter(word => word.length > 0).length;
+  }
+
   onSubmit() {
     this.formSubmitted = true;
     this.getSummary();
@@ -72,5 +84,6 @@ export class SimplificationComponent {
     this.form.reset();
     this.formSubmitted = false;
     this.summary = '';
+    this.wordCount = 0;
 }
 }

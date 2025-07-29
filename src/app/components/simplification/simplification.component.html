@@ -2,10 +2,13 @@
     <h2>Summarizing your text</h2>
     @if (!formSubmitted) {
         <form [formGroup]="form">
-            <textarea rows="7" cols="30" pTextarea formControlName="text"></textarea>
+            <p-floatlabel variant="on">
+                <textarea rows="7" cols="30" pTextarea formControlName="text" (input)="countWords()"></textarea>
+                <label for="on_label">at least 30 words: {{ wordCount }}</label>
+            </p-floatlabel>
             <div class="button-wrapper">
                 <p-button label="Back"  icon="pi pi-arrow-left"  (onClick)="onBackToMenu()" styleClass="cool-button"/>
-                <p-button label="Submit" [disabled]="isInputEmpty" icon="pi pi-send"  (onClick)="onSubmit()" styleClass="cool-button"/>
+                <p-button label="Submit" [disabled]="wordCount < 30" icon="pi pi-send"  (onClick)="onSubmit()" styleClass="cool-button"/>
             </div>
         </form>
     }@else {
