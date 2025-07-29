@@ -1,59 +1,64 @@
-# SimplifymeFrontend
+# 🧠 SimplifyMe – Dein persönlicher KI-Assistent
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+## Projektübersicht
 
-## Development server
+**SimplifyMe** ist ein persönlicher KI-Assistent, der hilft, komplexe Inhalte zu vereinfachen – etwa durch Bilderzeugung, Textzusammenfassungen und Bildbeschreibung.  
+Das Ziel: den Alltag mit Hilfe moderner KI-Modelle zu **erleichtern**.
 
-To start a local development server, run:
+Dieses Projekt ist Teil meiner persönlichen Weiterentwicklung und dient auch als Demonstration meiner technischen Fähigkeiten im Bereich Full-Stack-Entwicklung mit Fokus auf KI-Anwendungen.
 
-```bash
-ng serve
-```
+## ✨ Motivation
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Ich interessiere mich schon lange für künstliche Intelligenz. In Online-Kursen habe ich erste Einblicke gewonnen, wie man eigene Modelle trainieren kann – aber der Einstieg ist gerade für Anfänger nicht einfach.  
+Als ich dann zufällig auf [Hugging Face](https://huggingface.co/) gestoßen bin, wurde mir klar, dass man auch ohne eigenes Training viele leistungsstarke, vortrainierte Modelle nutzen kann.  
+So entstand die Idee zu **SimplifyMe** – ein Tool, das Inhalte mithilfe von KI verständlicher machen soll.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠️ Tech Stack
 
-```bash
-ng generate component component-name
-```
+- **Frontend**: Angular + PrimeNG  
+  → Bereitgestellt über **Render**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Backend**: Python + FastAPI  
+  → Gehostet auf **Hugging Face Spaces**
 
-```bash
-ng generate --help
-```
+- **Containerisierung**: Docker  
+  → Das komplette Backend wird als Docker-Image auf HF Space ausgeführt
 
-## Building
 
-To build the project run:
+## 🧩 Features
 
-```bash
-ng build
-```
+- **Bildgenerierung**  
+  → Nutzung eines großen KI-Modells zur Bildgenerierung (z. B. Stable Diffusion)  
+  → Aufgrund hoher RAM-Anforderungen und Limitierungen des Render Free Tiers wird dieses Feature auf Hugging Face Spaces gehostet.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Bildbeschreibung (Image-to-Text)**  
+  → Ein schneller KI-Dienst analysiert Bilder und generiert beschreibende Texte.
 
-## Running unit tests
+- **Textzusammenfassung (z. B. für Nachrichtenartikel)**  
+  → Längere Texte lassen sich automatisch vereinfachen und zusammenfassen.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
+## 🚀 Deployment-Entscheidungen
 
-## Running end-to-end tests
+- Das Backend wurde auf **Hugging Face Spaces** gehostet, da dort kostenlose GPU-Ressourcen zur Verfügung stehen – im Gegensatz zu Render, wo die kostenfreie Stufe keine ausreichenden Ressourcen für Bildgenerierung bietet.
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+- **Wartezeit bei Bildgenerierung**:  
+  Da Hugging Face Spaces im kostenlosen Plan nur begrenzte Ressourcen bereitstellt, war es wichtig, ein Modell zu wählen, das auch unter diesen Bedingungen **stabil läuft** und eine **geringe RAM-Nutzung** aufweist.  
+  Das Modell [`stabilityai/sd-turbo`](https://huggingface.co/stabilityai/sd-turbo) erfüllt diese Anforderungen gut – auch wenn die Bildqualität etwas geringer ist als bei größeren Modellen, eignet es sich hervorragend für das ressourcenschonende Hosting auf Hugging Face.  
+  Ein Nachteil: Aufgrund der automatischen Warteschlange (Queue) bei GPU-Spaces im Free Tier kann die Bildgenerierung **5 bis 10 Minuten dauern**, bis das Ergebnis vorliegt.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- **Textbasierte Features** (Bildbeschreibung, Zusammenfassung) sind schnell und zuverlässig.
 
-## Additional Resources
+## 📎 Demo / Links
+- **Frontend (Render)**: [https://simplifyme-frontend.onrender.com](https://simplifyme-frontend.onrender.com)  
+- **Backend (HF Space)**: [https://huggingface.co/spaces/KingOtter-Chun/SimplifyMe-Backend](https://huggingface.co/spaces/KingOtter-Chun/SimplifyMe-Backend)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📚 Ausblick
+
+In Zukunft plane ich, die Funktionalität von SimplifyMe weiter auszubauen:
+
+- Integration zusätzlicher KI-Modelle für weitere Anwendungsfälle (z. B. Text-zu-Audio, Chatfunktionen)
+- Benutzeroberfläche weiter verbessern und personalisierbar machen
+- Alternativen zu Hugging Face als Hosting-Plattform prüfen (z. B. Modal, Replicate, AWS, eigene Server)

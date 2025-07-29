@@ -8,11 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
 import { Router } from '@angular/router';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
     selector: 'app-caption',
     standalone: true,
-    imports: [CommonModule, FileUploadModule, ToastModule, ButtonModule, CardModule, GalleriaModule],
+    imports: [CommonModule, FileUploadModule, ToastModule, ButtonModule, CardModule, GalleriaModule, ProgressSpinnerModule],
     templateUrl: './caption.component.html',
     styleUrl: './caption.component.scss',
     providers: [MessageService],
@@ -22,6 +23,7 @@ export class CaptionComponent {
     isUploading: boolean = false;
     selectedImageIndex: number = 0;
     selectedCaption: string = '';
+    isLoading: boolean = false;
 
     responsiveOptions: any[] = [
         {
@@ -39,6 +41,8 @@ export class CaptionComponent {
 
     customUpload(event: any) {
         const files: File[] = event.files;
+
+        this.isLoading = true;
 
         this.uploadedFiles = files.map((file) => {
             const objectURL = URL.createObjectURL(file);
@@ -74,6 +78,9 @@ export class CaptionComponent {
             error: (err) => {
                 console.error('Fehler:', err);
                 this.messageService.add({ severity: 'error', summary: 'Error during upload' });
+            },
+            complete: () => {
+                this.isLoading = false;
             }
         });
     }
